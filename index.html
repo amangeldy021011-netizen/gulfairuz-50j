@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Юбилей 50 лет</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: black;
+    color: gold;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 40px 20px;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gold {
+    background: linear-gradient(45deg, #d4af37, #ffd700, #fff5cc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.big50 {
+    font-size: 120px;
+    font-weight: bold;
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {text-shadow: 0 0 10px gold;}
+    50% {text-shadow: 0 0 30px #ffd700;}
+    100% {text-shadow: 0 0 10px gold;}
+}
+
+.card {
+    border: 1px solid gold;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 500px;
+    border-radius: 20px;
+}
+
+img {
+    width: 220px;
+    border-radius: 50%;
+    margin: 20px 0;
+    border: 3px solid gold;
+}
+
+.timer {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+button {
+    background: gold;
+    color: black;
+    border: none;
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.map {
+    margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="big50 gold fade-in">50</div>
+
+    <h1 class="fade-in">Гульфайруз</h1>
+
+    <img src="photo.jpg" class="fade-in">
+
+    <div class="card fade-in">
+
+        <p>
+        Құрметті қонақтар!<br>
+        Сіздерді 50 жас мерейтойына шақырамыз!<br><br>
+
+        Дорогие гости!<br>
+        Приглашаем вас на юбилей 50 лет!
+        </p>
+
+        <p>📅 22.08.2026</p>
+        <p>⏰ 17:00</p>
+
+        <p>
+        📍 Ресторан "Samruk"<br>
+        Павлодар, ул. Желтоксан 129/2
+        </p>
+
+        <div class="timer" id="timer"></div>
+
+        <button onclick="alert('Рахмет! Күтеміз 💛 / Спасибо! Ждём вас 💛')">
+            Приду / Барамын
+        </button>
+
+        <button onclick="alert('Жаль! / Өкінішті 😢')">
+            Не приду / Келмеймін
+        </button>
+
+    </div>
+
+    <div class="map fade-in">
+        <iframe src="https://maps.google.com/maps?q=Samruk%20Pavlodar&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        width="90%" height="300" style="border:0;"></iframe>
+    </div>
+
+</div>
+
+<script>
+// Таймер
+const eventDate = new Date("Aug 22, 2026 17:00:00").getTime();
+
+const timer = document.getElementById("timer");
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const diff = eventDate - now;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+    timer.innerHTML = "До праздника: " + days + "д " + hours + "ч " + minutes + "м";
+}, 1000);
+</script>
+
+</body>
+</html>
